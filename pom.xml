@@ -34,6 +34,7 @@
         <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven-enforcer-plugin.version>3.6.1</maven-enforcer-plugin.version>
         <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
     </properties>
 
@@ -45,6 +46,28 @@
     <build>
         <pluginManagement>
             <plugins>
+                <!-- Сборка допускается только на JDK 21 и новее. -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>require-java-21</id>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireJavaVersion>
+                                        <version>[21,)</version>
+                                        <message>Нужен JDK 21 или новее. Укажите его в JAVA_HOME.</message>
+                                    </requireJavaVersion>
+                                </rules>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
                 <!--
                     Покрытие тестами (ядро — не меньше 85% строк).
                     Отчёт после verify: target/site/jacoco/index.html в каждом модуле.
@@ -84,6 +107,10 @@
             </plugins>
         </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
