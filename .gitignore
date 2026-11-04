@@ -1,0 +1,39 @@
+### Maven ###
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### Секреты: ключи шифрования TOTP, пароли, переменные окружения ###
+.env
+.env.*
+*.pem
+*.p12
+*.jks
+*.key
+secrets/
+
+### Базы геолокации и списки анонимайзеров (большие бинарные файлы, лицензии) ###
+*.mmdb
+
+### IntelliJ IDEA ###
+.idea/
+*.iml
+*.iws
+*.ipr
+
+### Eclipse / STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### VS Code ###
+.vscode/
+
+### ОС ###
+Thumbs.db
+.DS_Store

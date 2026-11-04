@@ -1,0 +1,18 @@
+# Maven Wrapper: скрипт для unix-оболочек должен иметь LF, для cmd — CRLF.
+/mvnw text eol=lf
+*.cmd text eol=crlf
+
+# Остальные текстовые файлы — LF в репозитории (проект собирается и в Windows, и в CI на Linux).
+*.java text eol=lf
+*.xml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sql text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.html text eol=lf
+*.sh text eol=lf
+
+*.mmdb binary
+*.png binary
